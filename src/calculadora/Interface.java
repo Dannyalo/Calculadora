@@ -17,6 +17,8 @@ public class Interface extends javax.swing.JFrame {
     public Interface() {
         initComponents();
     }
+    Double N1,N2;
+    String sinal;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -76,12 +78,32 @@ public class Interface extends javax.swing.JFrame {
         });
 
         Dividir.setText("÷");
+        Dividir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DividirActionPerformed(evt);
+            }
+        });
 
         Potencia.setText("x²");
+        Potencia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PotenciaActionPerformed(evt);
+            }
+        });
 
         CE.setText("CE");
+        CE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CEActionPerformed(evt);
+            }
+        });
 
         C.setText("C");
+        C.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CActionPerformed(evt);
+            }
+        });
 
         Apagar.setText("Apagar");
         Apagar.addActionListener(new java.awt.event.ActionListener() {
@@ -91,6 +113,11 @@ public class Interface extends javax.swing.JFrame {
         });
 
         Multiplicar.setText("*");
+        Multiplicar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MultiplicarActionPerformed(evt);
+            }
+        });
 
         B7.setText("7");
         B7.addActionListener(new java.awt.event.ActionListener() {
@@ -114,6 +141,11 @@ public class Interface extends javax.swing.JFrame {
         });
 
         Subtrair.setText("-");
+        Subtrair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SubtrairActionPerformed(evt);
+            }
+        });
 
         B5.setText("5");
         B5.addActionListener(new java.awt.event.ActionListener() {
@@ -137,6 +169,11 @@ public class Interface extends javax.swing.JFrame {
         });
 
         Soma.setText("+");
+        Soma.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SomaActionPerformed(evt);
+            }
+        });
 
         B2.setText("2");
         B2.addActionListener(new java.awt.event.ActionListener() {
@@ -174,8 +211,18 @@ public class Interface extends javax.swing.JFrame {
         });
 
         ponto.setText(".");
+        ponto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pontoActionPerformed(evt);
+            }
+        });
 
         Igual.setText("=");
+        Igual.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                IgualActionPerformed(evt);
+            }
+        });
 
         Calculadora.setBackground(new java.awt.Color(102, 0, 0));
         Calculadora.setFont(new java.awt.Font("Comic Sans MS", 1, 10)); // NOI18N
@@ -324,10 +371,19 @@ public class Interface extends javax.swing.JFrame {
 
     private void ApagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ApagarActionPerformed
         // TODO add your handling code here:
+        String str = Resultado.getText();
+        StringBuilder w = new StringBuilder(str);
+        str = String.valueOf( w.deleteCharAt(str.length() - 1) );
+        Resultado.setText(str);
     }//GEN-LAST:event_ApagarActionPerformed
 
     private void RaizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RaizActionPerformed
         // TODO add your handling code here:
+        N1 = Double.parseDouble(Resultado.getText());
+        N1 = Math.sqrt(N1);
+        String Texto3;
+        Texto3 = String.valueOf(N1);
+        Resultado.setText(Texto3);
     }//GEN-LAST:event_RaizActionPerformed
 
     private void B0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B0ActionPerformed
@@ -377,12 +433,98 @@ public class Interface extends javax.swing.JFrame {
 
     private void PosNegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PosNegActionPerformed
         // TODO add your handling code here:
+        N1 = Double.parseDouble(Resultado.getText());
+        if(N1 > 0){
+            N1 = N1*(-1);
+        }
+        else{
+        N1 = N1*(-1);}
+        String Texto;
+        Texto = String.valueOf(N1);
+        Resultado.setText(Texto);
     }//GEN-LAST:event_PosNegActionPerformed
 
     private void PorcentagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PorcentagemActionPerformed
         // TODO add your handling code here:
+        N2 = Double.parseDouble(Resultado.getText());
+        N2 = (N2*100)/N1;
+        String Texto4;
+        Texto4 = String.valueOf(N2);
+        Resultado.setText(Texto4);
     }//GEN-LAST:event_PorcentagemActionPerformed
 
+    private void pontoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pontoActionPerformed
+        // TODO add your handling code here:
+        Resultado.setText(Resultado.getText()+".");
+    }//GEN-LAST:event_pontoActionPerformed
+
+    private void CEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CEActionPerformed
+        // TODO add your handling code here:
+        Resultado.setText("");
+    }//GEN-LAST:event_CEActionPerformed
+
+    private void SomaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SomaActionPerformed
+        // TODO add your handling code here:
+        N1 = Double.parseDouble(Resultado.getText());
+        sinal ="soma";
+        Resultado.setText("");
+    }//GEN-LAST:event_SomaActionPerformed
+
+    private void IgualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IgualActionPerformed
+        // TODO add your handling code here:
+        N2 = Double.parseDouble(Resultado.getText());
+        // Operações Matematicas>>
+        if(sinal == "soma"){
+            Resultado.setText(String.valueOf(N1+N2));
+        }
+        else if(sinal == "subtrair"){
+            Resultado.setText(String.valueOf(N1-N2));
+        }
+        else if(sinal == "multiplicar"){
+            Resultado.setText(String.valueOf(N1*N2));
+        }
+        else if(sinal == "dividir"){
+            Resultado.setText(String.valueOf(N1/N2));
+        }
+    }//GEN-LAST:event_IgualActionPerformed
+
+    private void SubtrairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubtrairActionPerformed
+        // TODO add your handling code here:
+        N1 = Double.parseDouble(Resultado.getText());
+        sinal ="subtrair";
+        Resultado.setText("");
+    }//GEN-LAST:event_SubtrairActionPerformed
+
+    private void MultiplicarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MultiplicarActionPerformed
+        // TODO add your handling code heres:
+        N1 = Double.parseDouble(Resultado.getText());
+        sinal ="multiplicar";
+        Resultado.setText("");
+    }//GEN-LAST:event_MultiplicarActionPerformed
+
+    private void DividirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DividirActionPerformed
+        // TODO add your handling code here:
+        N1 = Double.parseDouble(Resultado.getText());
+        sinal ="dividir";
+        Resultado.setText("");
+    }//GEN-LAST:event_DividirActionPerformed
+
+    private void PotenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PotenciaActionPerformed
+        // TODO add your handling code here:
+        N1 = Double.parseDouble(Resultado.getText());
+        N1 = N1*N1;
+        String Texto2;
+        Texto2 = String.valueOf(N1);
+        Resultado.setText(Texto2);
+    }//GEN-LAST:event_PotenciaActionPerformed
+
+    private void CActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CActionPerformed
+        // TODO add your handling code here:
+        N1 = null;
+        N2 = null;
+        Resultado.setText("");
+    }//GEN-LAST:event_CActionPerformed
+ 
     /**
      * @param args the command line arguments
      */

@@ -217,21 +217,33 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="&#xf7;"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DividirActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="Potencia">
           <Properties>
             <Property name="text" type="java.lang.String" value="x&#xb2;"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PotenciaActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="CE">
           <Properties>
             <Property name="text" type="java.lang.String" value="CE"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CEActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="C">
           <Properties>
             <Property name="text" type="java.lang.String" value="C"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="Apagar">
           <Properties>
@@ -245,6 +257,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="*"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MultiplicarActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="B7">
           <Properties>
@@ -274,6 +289,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="-"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SubtrairActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="B5">
           <Properties>
@@ -303,6 +321,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="+"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SomaActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="B2">
           <Properties>
@@ -348,11 +369,17 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="."/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="pontoActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="Igual">
           <Properties>
             <Property name="text" type="java.lang.String" value="="/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="IgualActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="Calculadora">
           <Properties>
