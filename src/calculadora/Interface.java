@@ -4,21 +4,35 @@
  * and open the template in the editor.
  */
 package calculadora;
+import java.awt.Color;
+import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
+import javax.swing.text.Document;
+import javax.swing.text.PlainDocument;
+import static javax.swing.text.StyleConstants.setIcon;
 
 /**
  *
  * @author Josue
  */
+
 public class Interface extends javax.swing.JFrame {
+    
 
     /**
      * Creates new form Interface
      */
     public Interface() {
         initComponents();
+        setIcon(); 
     }
+    //Variaveis
     Double N1,N2;
     String sinal;
+    String Event;
+    String str;
+    //Chamada De eventos pelo teclado
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -57,12 +71,29 @@ public class Interface extends javax.swing.JFrame {
         Calculadora = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
-        Interface.setBackground(new java.awt.Color(51, 51, 255));
+        Interface.setBackground(new java.awt.Color(55, 55, 55));
 
-        Resultado.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 24)); // NOI18N
+        Resultado.setBackground(new java.awt.Color(46, 46, 46));
+        Resultado.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 36)); // NOI18N
+        Resultado.setForeground(new java.awt.Color(255, 255, 255));
         Resultado.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        Resultado.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 9, true));
+        Resultado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ResultadoActionPerformed(evt);
+            }
+        });
+        Resultado.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                ResultadoKeyTyped(evt);
+            }
+        });
 
+        Porcentagem.setBackground(new java.awt.Color(52, 52, 52));
+        Porcentagem.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        Porcentagem.setForeground(new java.awt.Color(255, 255, 255));
         Porcentagem.setText("%");
         Porcentagem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -70,6 +101,9 @@ public class Interface extends javax.swing.JFrame {
             }
         });
 
+        Raiz.setBackground(new java.awt.Color(52, 52, 52));
+        Raiz.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        Raiz.setForeground(new java.awt.Color(255, 255, 255));
         Raiz.setText("√");
         Raiz.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -77,6 +111,9 @@ public class Interface extends javax.swing.JFrame {
             }
         });
 
+        Dividir.setBackground(new java.awt.Color(52, 52, 52));
+        Dividir.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        Dividir.setForeground(new java.awt.Color(255, 255, 255));
         Dividir.setText("÷");
         Dividir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -84,6 +121,9 @@ public class Interface extends javax.swing.JFrame {
             }
         });
 
+        Potencia.setBackground(new java.awt.Color(52, 52, 52));
+        Potencia.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        Potencia.setForeground(new java.awt.Color(255, 255, 255));
         Potencia.setText("x²");
         Potencia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,6 +131,9 @@ public class Interface extends javax.swing.JFrame {
             }
         });
 
+        CE.setBackground(new java.awt.Color(52, 52, 52));
+        CE.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        CE.setForeground(new java.awt.Color(255, 255, 255));
         CE.setText("CE");
         CE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -98,6 +141,9 @@ public class Interface extends javax.swing.JFrame {
             }
         });
 
+        C.setBackground(new java.awt.Color(52, 52, 52));
+        C.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        C.setForeground(new java.awt.Color(255, 255, 255));
         C.setText("C");
         C.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -105,13 +151,19 @@ public class Interface extends javax.swing.JFrame {
             }
         });
 
-        Apagar.setText("Apagar");
+        Apagar.setBackground(new java.awt.Color(52, 52, 52));
+        Apagar.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        Apagar.setForeground(new java.awt.Color(255, 255, 255));
+        Apagar.setText("<-x");
         Apagar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ApagarActionPerformed(evt);
             }
         });
 
+        Multiplicar.setBackground(new java.awt.Color(52, 52, 52));
+        Multiplicar.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        Multiplicar.setForeground(new java.awt.Color(255, 255, 255));
         Multiplicar.setText("*");
         Multiplicar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -119,6 +171,9 @@ public class Interface extends javax.swing.JFrame {
             }
         });
 
+        B7.setBackground(new java.awt.Color(52, 52, 52));
+        B7.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        B7.setForeground(new java.awt.Color(255, 255, 255));
         B7.setText("7");
         B7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -126,6 +181,9 @@ public class Interface extends javax.swing.JFrame {
             }
         });
 
+        B8.setBackground(new java.awt.Color(52, 52, 52));
+        B8.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        B8.setForeground(new java.awt.Color(255, 255, 255));
         B8.setText("8");
         B8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -133,6 +191,9 @@ public class Interface extends javax.swing.JFrame {
             }
         });
 
+        B9.setBackground(new java.awt.Color(52, 52, 52));
+        B9.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        B9.setForeground(new java.awt.Color(255, 255, 255));
         B9.setText("9");
         B9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -140,6 +201,9 @@ public class Interface extends javax.swing.JFrame {
             }
         });
 
+        Subtrair.setBackground(new java.awt.Color(52, 52, 52));
+        Subtrair.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        Subtrair.setForeground(new java.awt.Color(255, 255, 255));
         Subtrair.setText("-");
         Subtrair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -147,6 +211,9 @@ public class Interface extends javax.swing.JFrame {
             }
         });
 
+        B5.setBackground(new java.awt.Color(52, 52, 52));
+        B5.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        B5.setForeground(new java.awt.Color(255, 255, 255));
         B5.setText("5");
         B5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -154,6 +221,9 @@ public class Interface extends javax.swing.JFrame {
             }
         });
 
+        B4.setBackground(new java.awt.Color(52, 52, 52));
+        B4.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        B4.setForeground(new java.awt.Color(255, 255, 255));
         B4.setText("4");
         B4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -161,6 +231,9 @@ public class Interface extends javax.swing.JFrame {
             }
         });
 
+        B6.setBackground(new java.awt.Color(52, 52, 52));
+        B6.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        B6.setForeground(new java.awt.Color(255, 255, 255));
         B6.setText("6");
         B6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -168,6 +241,9 @@ public class Interface extends javax.swing.JFrame {
             }
         });
 
+        Soma.setBackground(new java.awt.Color(52, 52, 52));
+        Soma.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        Soma.setForeground(new java.awt.Color(255, 255, 255));
         Soma.setText("+");
         Soma.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -175,6 +251,9 @@ public class Interface extends javax.swing.JFrame {
             }
         });
 
+        B2.setBackground(new java.awt.Color(52, 52, 52));
+        B2.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        B2.setForeground(new java.awt.Color(255, 255, 255));
         B2.setText("2");
         B2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -182,13 +261,24 @@ public class Interface extends javax.swing.JFrame {
             }
         });
 
+        B1.setBackground(new java.awt.Color(52, 52, 52));
+        B1.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        B1.setForeground(new java.awt.Color(255, 255, 255));
         B1.setText("1");
         B1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 B1ActionPerformed(evt);
             }
         });
+        B1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                B1KeyPressed(evt);
+            }
+        });
 
+        B3.setBackground(new java.awt.Color(52, 52, 52));
+        B3.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        B3.setForeground(new java.awt.Color(255, 255, 255));
         B3.setText("3");
         B3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -196,6 +286,9 @@ public class Interface extends javax.swing.JFrame {
             }
         });
 
+        B0.setBackground(new java.awt.Color(52, 52, 52));
+        B0.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        B0.setForeground(new java.awt.Color(255, 255, 255));
         B0.setText("0");
         B0.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -203,6 +296,9 @@ public class Interface extends javax.swing.JFrame {
             }
         });
 
+        PosNeg.setBackground(new java.awt.Color(52, 52, 52));
+        PosNeg.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        PosNeg.setForeground(new java.awt.Color(255, 255, 255));
         PosNeg.setText("+/-");
         PosNeg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -210,6 +306,9 @@ public class Interface extends javax.swing.JFrame {
             }
         });
 
+        ponto.setBackground(new java.awt.Color(52, 52, 52));
+        ponto.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        ponto.setForeground(new java.awt.Color(255, 255, 255));
         ponto.setText(".");
         ponto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -217,160 +316,162 @@ public class Interface extends javax.swing.JFrame {
             }
         });
 
+        Igual.setBackground(new java.awt.Color(52, 52, 52));
+        Igual.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        Igual.setForeground(new java.awt.Color(255, 255, 255));
         Igual.setText("=");
         Igual.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 IgualActionPerformed(evt);
             }
         });
+        Igual.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                IgualKeyPressed(evt);
+            }
+        });
 
         Calculadora.setBackground(new java.awt.Color(102, 0, 0));
-        Calculadora.setFont(new java.awt.Font("Comic Sans MS", 1, 10)); // NOI18N
+        Calculadora.setFont(new java.awt.Font("Cambria", 1, 36)); // NOI18N
+        Calculadora.setForeground(new java.awt.Color(255, 255, 255));
         Calculadora.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Calculadora.setText("Calculadora");
+        Calculadora.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         javax.swing.GroupLayout InterfaceLayout = new javax.swing.GroupLayout(Interface);
         Interface.setLayout(InterfaceLayout);
         InterfaceLayout.setHorizontalGroup(
             InterfaceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 396, Short.MAX_VALUE)
-            .addGroup(InterfaceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(InterfaceLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addGroup(InterfaceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(InterfaceLayout.createSequentialGroup()
-                            .addComponent(CE, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(C, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Apagar, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(Multiplicar, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(InterfaceLayout.createSequentialGroup()
-                            .addComponent(B7, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(B8, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(B9, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(Subtrair, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(InterfaceLayout.createSequentialGroup()
-                            .addComponent(B4, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(B5, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(B6, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(Soma, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(InterfaceLayout.createSequentialGroup()
-                            .addGroup(InterfaceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(InterfaceLayout.createSequentialGroup()
-                                    .addComponent(B1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(B2, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(B3, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(InterfaceLayout.createSequentialGroup()
-                                    .addComponent(PosNeg, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(B0, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(ponto, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(Igual, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(InterfaceLayout.createSequentialGroup()
-                            .addGap(2, 2, 2)
-                            .addGroup(InterfaceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(Resultado)
-                                .addGroup(InterfaceLayout.createSequentialGroup()
-                                    .addComponent(Porcentagem, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(Raiz, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(Potencia, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(Dividir, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(InterfaceLayout.createSequentialGroup()
-                                    .addComponent(Calculadora, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(0, 0, Short.MAX_VALUE)))))
-                    .addContainerGap()))
+            .addGroup(InterfaceLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(InterfaceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(InterfaceLayout.createSequentialGroup()
+                        .addComponent(CE, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(C, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Apagar, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Multiplicar, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(InterfaceLayout.createSequentialGroup()
+                        .addComponent(B7, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(B8, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(B9, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Subtrair, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(InterfaceLayout.createSequentialGroup()
+                        .addComponent(B4, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(B5, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(B6, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Soma, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(InterfaceLayout.createSequentialGroup()
+                        .addGroup(InterfaceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(InterfaceLayout.createSequentialGroup()
+                                .addComponent(B1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(B2, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(B3, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(InterfaceLayout.createSequentialGroup()
+                                .addComponent(PosNeg, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(B0, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(ponto, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Igual, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(InterfaceLayout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addComponent(Resultado))
+                    .addGroup(InterfaceLayout.createSequentialGroup()
+                        .addComponent(Porcentagem, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(8, 8, 8)
+                        .addComponent(Raiz, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Potencia, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Dividir, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(InterfaceLayout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(Calculadora, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         InterfaceLayout.setVerticalGroup(
             InterfaceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 537, Short.MAX_VALUE)
-            .addGroup(InterfaceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(InterfaceLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(Calculadora, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(Resultado, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addGroup(InterfaceLayout.createSequentialGroup()
+                .addGap(7, 7, 7)
+                .addComponent(Calculadora, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(Resultado, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(InterfaceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(InterfaceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(Porcentagem, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(Raiz, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(Dividir, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(Potencia, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addGroup(InterfaceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(CE, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(C, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(Multiplicar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(Apagar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addGroup(InterfaceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(B7, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(B8, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(Subtrair, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(B9, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addGroup(InterfaceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(B4, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(B5, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(Soma, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(B6, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addGroup(InterfaceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(InterfaceLayout.createSequentialGroup()
-                            .addGroup(InterfaceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(B1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(B2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(B3, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addGroup(InterfaceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(PosNeg, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(B0, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(ponto, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addComponent(Igual, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(Porcentagem, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(InterfaceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(CE, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(C, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Multiplicar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Apagar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(InterfaceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(B7, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(B8, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Subtrair, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(B9, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(InterfaceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(B4, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(B5, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Soma, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(B6, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(InterfaceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(InterfaceLayout.createSequentialGroup()
+                        .addGroup(InterfaceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(B1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(B2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(B3, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(InterfaceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(PosNeg, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(B0, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ponto, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(Igual, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(Interface, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(Interface, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(Interface, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(Interface, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void B7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B7ActionPerformed
-        // TODO add your handling code here:
+        // adicionar 7:
         Resultado.setText(Resultado.getText()+"7");
+        B7.setBackground(new Color(1,1,1));
     }//GEN-LAST:event_B7ActionPerformed
 
     private void ApagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ApagarActionPerformed
-        // TODO add your handling code here:
+        //Apagar o ultimo numero:
         String str = Resultado.getText();
         StringBuilder w = new StringBuilder(str);
         str = String.valueOf( w.deleteCharAt(str.length() - 1) );
@@ -378,7 +479,7 @@ public class Interface extends javax.swing.JFrame {
     }//GEN-LAST:event_ApagarActionPerformed
 
     private void RaizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RaizActionPerformed
-        // TODO add your handling code here:
+        // Calculo Da Raiz
         N1 = Double.parseDouble(Resultado.getText());
         N1 = Math.sqrt(N1);
         String Texto3;
@@ -387,52 +488,52 @@ public class Interface extends javax.swing.JFrame {
     }//GEN-LAST:event_RaizActionPerformed
 
     private void B0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B0ActionPerformed
-        // TODO add your handling code here:
+        // Adicionar 0
         Resultado.setText(Resultado.getText()+"0");
     }//GEN-LAST:event_B0ActionPerformed
 
     private void B1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B1ActionPerformed
-        // TODO add your handling code here:
+        // Adicionar 1
         Resultado.setText(Resultado.getText()+"1");
     }//GEN-LAST:event_B1ActionPerformed
 
     private void B2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B2ActionPerformed
-        // TODO add your handling code here:
+        // Adicionar 2
         Resultado.setText(Resultado.getText()+"2");
     }//GEN-LAST:event_B2ActionPerformed
 
     private void B3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B3ActionPerformed
-        // TODO add your handling code here:
+        // Adicionar 3
         Resultado.setText(Resultado.getText()+"3");
     }//GEN-LAST:event_B3ActionPerformed
 
     private void B4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B4ActionPerformed
-        // TODO add your handling code here:
+        // Adicionar 4
         Resultado.setText(Resultado.getText()+"4");
     }//GEN-LAST:event_B4ActionPerformed
 
     private void B5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B5ActionPerformed
-        // TODO add your handling code here:
+        // Adicionar 5
         Resultado.setText(Resultado.getText()+"5");
     }//GEN-LAST:event_B5ActionPerformed
 
     private void B6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B6ActionPerformed
-        // TODO add your handling code here:
+        // Adicionar 6
         Resultado.setText(Resultado.getText()+"6");
     }//GEN-LAST:event_B6ActionPerformed
 
     private void B8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B8ActionPerformed
-        // TODO add your handling code here:
+        // Adicionar 8
         Resultado.setText(Resultado.getText()+"8");
     }//GEN-LAST:event_B8ActionPerformed
 
     private void B9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B9ActionPerformed
-        // TODO add your handling code here:
+        // Adicionar 9
         Resultado.setText(Resultado.getText()+"9");
     }//GEN-LAST:event_B9ActionPerformed
 
     private void PosNegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PosNegActionPerformed
-        // TODO add your handling code here:
+        // Deixar o numero negativo 
         N1 = Double.parseDouble(Resultado.getText());
         if(N1 > 0){
             N1 = N1*(-1);
@@ -445,7 +546,7 @@ public class Interface extends javax.swing.JFrame {
     }//GEN-LAST:event_PosNegActionPerformed
 
     private void PorcentagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PorcentagemActionPerformed
-        // TODO add your handling code here:
+        // Calculo Da Porcentagem
         N2 = Double.parseDouble(Resultado.getText());
         N2 = (N2*100)/N1;
         String Texto4;
@@ -454,24 +555,24 @@ public class Interface extends javax.swing.JFrame {
     }//GEN-LAST:event_PorcentagemActionPerformed
 
     private void pontoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pontoActionPerformed
-        // TODO add your handling code here:
+        // Colocar um Ponto
         Resultado.setText(Resultado.getText()+".");
     }//GEN-LAST:event_pontoActionPerformed
 
     private void CEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CEActionPerformed
-        // TODO add your handling code here:
+        // Apagar o Numero total
         Resultado.setText("");
     }//GEN-LAST:event_CEActionPerformed
 
     private void SomaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SomaActionPerformed
-        // TODO add your handling code here:
+        // Chama Soma
         N1 = Double.parseDouble(Resultado.getText());
         sinal ="soma";
         Resultado.setText("");
     }//GEN-LAST:event_SomaActionPerformed
 
     private void IgualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IgualActionPerformed
-        // TODO add your handling code here:
+        // Executa as operações
         N2 = Double.parseDouble(Resultado.getText());
         // Operações Matematicas>>
         if(sinal == "soma"){
@@ -489,28 +590,28 @@ public class Interface extends javax.swing.JFrame {
     }//GEN-LAST:event_IgualActionPerformed
 
     private void SubtrairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubtrairActionPerformed
-        // TODO add your handling code here:
+        // Chama a Subtração
         N1 = Double.parseDouble(Resultado.getText());
         sinal ="subtrair";
         Resultado.setText("");
     }//GEN-LAST:event_SubtrairActionPerformed
 
     private void MultiplicarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MultiplicarActionPerformed
-        // TODO add your handling code heres:
+        // Multiplica
         N1 = Double.parseDouble(Resultado.getText());
         sinal ="multiplicar";
         Resultado.setText("");
     }//GEN-LAST:event_MultiplicarActionPerformed
 
     private void DividirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DividirActionPerformed
-        // TODO add your handling code here:
+        // Chama a divisão
         N1 = Double.parseDouble(Resultado.getText());
         sinal ="dividir";
         Resultado.setText("");
     }//GEN-LAST:event_DividirActionPerformed
 
     private void PotenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PotenciaActionPerformed
-        // TODO add your handling code here:
+        // potencializa
         N1 = Double.parseDouble(Resultado.getText());
         N1 = N1*N1;
         String Texto2;
@@ -519,11 +620,37 @@ public class Interface extends javax.swing.JFrame {
     }//GEN-LAST:event_PotenciaActionPerformed
 
     private void CActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CActionPerformed
-        // TODO add your handling code here:
+        // Exclui os numeros
         N1 = null;
         N2 = null;
         Resultado.setText("");
     }//GEN-LAST:event_CActionPerformed
+// Precionamento de botões
+    private void IgualKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_IgualKeyPressed
+
+    }//GEN-LAST:event_IgualKeyPressed
+
+    private void B1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B1KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_B1KeyPressed
+
+    private void ResultadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ResultadoActionPerformed
+        // TODO add your handling code here
+    }//GEN-LAST:event_ResultadoActionPerformed
+
+    private void ResultadoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ResultadoKeyTyped
+        // TODO add your handling code here:
+        String numFornecedor = Resultado.getText();
+        int quantCaracteres = numFornecedor.length();
+        if (quantCaracteres >= 16) {
+            numFornecedor = numFornecedor.substring(0, numFornecedor.length() - 1);
+            Resultado.setText(numFornecedor);
+        }
+        char c = evt.getKeyChar();
+     
+    if(c<'0' || c>'9');
+   evt.consume();
+    }//GEN-LAST:event_ResultadoKeyTyped
  
     /**
      * @param args the command line arguments
@@ -588,4 +715,8 @@ public class Interface extends javax.swing.JFrame {
     private javax.swing.JButton Subtrair;
     private javax.swing.JButton ponto;
     // End of variables declaration//GEN-END:variables
+
+    private void setIcon() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("Icone.jpg")));
+    }
 }

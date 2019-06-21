@@ -5,6 +5,9 @@
  */
 package calculadora;
 
+import javax.swing.text.BadLocationException;
+import javax.swing.text.PlainDocument;
+
 /**
  *
  * @author Josue
@@ -17,5 +20,14 @@ public class Calculadora {
     public static void main(String[] args) {
         // TODO code application logic here
     }
+    public class Interface extends PlainDocument{
+    public void inserString(int offset, String str, javax.swing.text.AttributeSet attr)throws BadLocationException{
+        super.insertString(offset, str.replaceAll("[^0-9^ ]", ""), attr);
+    }
+    
+    public void replace(int offset, String str, javax.swing.text.AttributeSet attr)throws BadLocationException{
+        super.insertString(offset, str.replaceAll("[^a-z|^A-Z|^ ]", ""), attr);
+    }
+}
     
 }
